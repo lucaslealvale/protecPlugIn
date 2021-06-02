@@ -1,0 +1,20 @@
+{
+
+  "manifest_version": 2,
+  "name": "Protec",
+  "version": "1.0",
+
+  "description": "Protects your network.",
+
+  "icons": {
+    "48": "icon/shield.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["protec.js"]
+    }
+  ]
+
+}
