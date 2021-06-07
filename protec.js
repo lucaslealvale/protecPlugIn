@@ -23,13 +23,29 @@ var urls = Array.prototype.map.call(
 do usuário */
 console.log(Object.entries(localStorage))
 
-// content.js
-browser.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-        if(request.method == "getRequests"){
-            document.body.innerText = "aaaa";
-            document.getElementById("one").innerHTML = "uwu";
-            sendResponse({text: document.body.innerText, method: "changePage"}); //same as innerText
-        }
-    }
-);
+console.log(Object.entries(sessionStorage))
+
+
+
+
+// // content.js
+// browser.runtime.onMessage.addListener(
+//     function(request, sender, sendResponse) {
+//         if(request.method == "getRequests"){
+//             console.log("recebi a request")
+//             document.body.innerText = "aaaa";
+//             return Promise.resolve({response: "Hi from content script"});
+//             //sendResponse({text: "Aaaaaa", method: "loadRequests"}); //same as innerText
+//             //console.log({text: "Aaaaaa", method: "loadRequests"});
+//         }
+//     }
+// );
+
+
+browser.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    console.log("Message from the background script:");
+    console.log(request.greeting);
+    sendResponse({data: "test"});
+    return true
+    //return Promise.resolve({response: "Hi from content script"});
+  });
