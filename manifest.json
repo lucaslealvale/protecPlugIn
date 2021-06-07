@@ -3,6 +3,8 @@
   "manifest_version": 2,
   "name": "Protec",
   "version": "1.0",
+  "permissions": ["cookies","<all_urls>","tabs"],
+
 
   "description": "Protects your network.",
 
@@ -15,6 +17,10 @@
       "matches": ["*://*/*"],
       "js": ["protec.js"]
     }
-  ]
-
+  ],
+  "browser_action": {
+    "default_icon": "icon/shield.png",
+    "default_title": "Protec",
+    "default_popup": "popup.html"
+  }
 }
