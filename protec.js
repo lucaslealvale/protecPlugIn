@@ -41,11 +41,24 @@ console.log(Object.entries(sessionStorage))
 //     }
 // );
 
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+      if( request.message === "start" ) {
+       start();
+           }
+        sendResponse({data:"aaaaaa"})
+    }
+  );
 
-browser.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    console.log("Message from the background script:");
-    console.log(request.greeting);
-    sendResponse({data: "test"});
-    return true
-    //return Promise.resolve({response: "Hi from content script"});
-  });
+  function start(){
+      alert("started");
+  }
+
+/*function handleResponse(request, sender , sendResponse){
+    console.log("Message from the popup script:")
+    console.log(request.greeting)
+    sendResponse({data:"kill myself"})
+}
+
+
+browser.runtime.onMessage.addListener(handleResponse)*/
