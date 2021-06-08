@@ -43,16 +43,18 @@ console.log(Object.entries(sessionStorage))
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-      if( request.message === "start" ) {
-       start();
-           }
-        sendResponse({data:"aaaaaa"})
+        if( request.message === "start") {
+            start();
+        }
+        sendResponse({response: "answer uwu"});
+        console.log(`res = ${}`);
+        return true;
     }
-  );
+);
 
-  function start(){
-      alert("started");
-  }
+function start(){
+    alert("started");
+}
 
 /*function handleResponse(request, sender , sendResponse){
     console.log("Message from the popup script:")

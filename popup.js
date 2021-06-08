@@ -3,16 +3,16 @@ function popup() {
   p.textContent = "This paragraph was added by a page script.";
   p.setAttribute("id", "page-script-para");
 
-  chrome.tabs.query({currentWindow: true, active: true}, function (tabs){
+  browser.tabs.query({currentWindow: true, active: true}, function (tabs){
   var activeTab = tabs[0];
-  chrome.tabs.sendMessage(activeTab.id, {"message": "start"}).then(response => {
-
-  });
- });
- document.body.appendChild(p);
-
+  const res = browser.tabs.sendMessage(activeTab.id, {"message": "start"});
+  if (res){
+    p.textContent = res;
+    document.body.appendChild(p);
+  }
+});
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-document.getElementById("button1").addEventListener("click", popup);
+  document.getElementById("button1").addEventListener("click", popup);
 });
